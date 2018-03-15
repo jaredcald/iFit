@@ -1,0 +1,155 @@
+Notes:
+
+Since the only sample workouts we have drawn up at this point were all beginner workouts, and I didn't want to structure a bunch of random workouts without talking to you guys,
+I just made it so we have 1 of each difficulty (changed the difficulty of some of the beginner workouts).  I just gauged it subjectively.  
+I figure we can talk about all the details and make necessary changes, but this way we at least can have
+something in the database if we need to present to the class.
+
+Duration attribute removed from EXERCISE table since I'm not sure 
+how to input a range like "10-15 mins" as an attribute.  For now, the
+duration attribute is only in the WORKOUT table.  I figure we can calculate it somehow in the front end code.
+
+For the ranges of reps like "8-10", I just used the higher number. Again, I'm not sure how to implement a range as an attribute.  
+
+I guess we could add another attribute to the table, so there is like a "high" and a "low" for any attribute that needs a range.  We can discuss tomorrow. 
+
+
+
+
+INSERT INTO DIFFICULTY 
+VALUES('D1', 'Beginner');
+
+INSERT INTO DIFFICULTY 
+VALUES('D2', 'Intermediate');
+
+INSERT INTO DIFFICULTY 
+VALUES('D3', 'Advanced');
+
+
+INSERT INTO WORKOUT
+VALUES('W001', 'Full Body 1', 40, 'D2');
+
+INSERT INTO WORKOUT
+VALUES('W002', 'Full Body 2', 30, 'D3');
+
+INSERT INTO WORKOUT
+VALUES('W003', 'Full Body 3', 35, 'D1');
+
+INSERT INTO WORKOUT
+VALUES('W004', 'Overflow Workout 1', 10, 'D1'); 
+
+INSERT INTO WORKOUT
+VALUES('W005', 'Overflow Workout 2', 10, 'D2'); 
+
+INSERT INTO WORKOUT
+VALUES('W006', 'Overflow Workout 3', 10, 'D3'); 
+
+
+INSERT INTO EXERCISE
+VALUES('E001', 'Treadmill', 1, NULL);
+
+INSERT INTO EXERCISE
+VALUES('E002', 'Bench Press', 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E003', 'Lat Pull Down', 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E004', 'Leg Extensions', 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E005', 'Hamstring Curls', 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E006', 'Crunches', 2, 25);
+
+INSERT INTO EXERCISE
+VALUES('E007', 'Jump Rope', 1, NULL);
+
+INSERT INTO EXERCISE
+VALUES('E008', 'Machine Squat', 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E009', 'Machine Upward Row', 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E010', 'Shoulder Press', 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E011', 'Calf Raises, 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E012', 'Plank', 2, NULL);
+
+INSERT INTO EXERCISE
+VALUES('E013', 'Stair Master', 1, NULL);
+
+INSERT INTO EXERCISE
+VALUES('E014', 'Bicep Barbell Curls', 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E015', 'Tricep Rope Extensions', 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E016', 'Lateral Shoulder Raises', 4, 12);
+
+INSERT INTO EXERCISE
+VALUES('E017', 'Lunges', 3, 12);
+
+INSERT INTO EXERCISE
+VALUES('E018', 'Machine Crunches', 3, 12);
+
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W001','E001');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W001','E002');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W001','E003');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W001','E004');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W005','E005');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W005','E006');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W002','E007');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W002','E008');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W002','E009');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W002','E010');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W006','E011');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W006','E012');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W003','E013');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W003','E014');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W003','E015');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W003','E016');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W004','E017');
+
+INSERT INTO WORKOUT_EXERCISE
+VALUES('W004','E018');

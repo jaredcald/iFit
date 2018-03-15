@@ -1,0 +1,78 @@
+//get difficulty from the user when they select from dropdown
+
+//the POST is more of a placeholder.  Depends on which control we end up using and what it is called
+$difficulty = $_POST['difficulty']
+
+//query DIFFICULTY table to get the ID of the difficulty 
+
+$query = "SELECT difficultyID from DIFFICULTY WHERE difficultyName LIKE '$difficulty'";
+
+$result = mysqli_query($connection, $query);
+
+$numRows = mysqli_num_rows($result);
+
+if($numRows == 0)
+{
+	echo "No results found!";
+}
+else
+{
+    $row = mysqli_fetch_row($result);
+    $difficultyID = $row[0];
+    
+    //need to populate an array with ALL of the exercises that correspond to the selected difficulty
+
+    //need to query multiple tables for this 
+
+    $query = "SELECT workoutID FROM WORKOUT WHERE difficultyID LIKE '$difficultyID'";
+
+    $result = mysqli_query($connection, $query);
+
+	$numRows = mysqli_num_rows($result);
+
+    $workoutIDArray = [];
+
+    for($i = 0; $i < $numRows; $i++)
+	{
+		$row = mysqli_fetch_row($result);
+        array_push($workoutIDArray, $row[0]);
+    }
+
+    //we now have the workoutIDs for all workout of the selected difficulty in the $workoutIDArray
+
+    $exerciseIDArray = [];
+
+    foreach ($workoutIDArray as $id)
+    {
+        $query = "SELECT exerciseID FROM WORKOUT_EXERCISE WHERE workoutID LIKE '$id'";
+        $result = mysqli_query($connection, $query);
+        $numRows = mysqli_num_rows($result);
+
+        for($i = 0; $i < $numRows; $i++)
+	    {
+		    $row = mysqli_fetch_row($result);
+            array_push($exerciseIDArray, $row[0]);
+        }
+    }
+
+    //now we have all of the exerciseIDs of all the exercises associated with the selected difficulty
+
+    //need to iterate through the array, and place the corresponding exercises into an indexed array 
+
+    //also need an array to hold all of the indexed arrays (one indexed array for each exercise)
+
+    $exerciseArray = array();
+
+    foreach ($exerciseIDArray as $id)
+    {
+        $query = "SELECT * FROM EXERCISE where exerciseID LIKE '$id'";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_row($result);
+
+        //Storing the exerciseID in the array is not necessary
+        $exerciseArray[] = array('Name' => $row[1], 'Sets' => $row[2], 'Reps' => $row[3])
+    }
+
+    //Now just need to iterate through $exerciseArray[] and output to the web interface
+
+}

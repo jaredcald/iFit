@@ -1,0 +1,57 @@
+CREATE TABLE DIFFICULTY(
+	difficultyID CHAR(2) PRIMARY KEY,
+	difficultyName CHAR(12) NOT NULL
+);
+
+NOTES:
+
+difficultyID: only needs 2 characters since there are only 3 difficulties
+	      format: D1, D2, D3
+
+
+
+
+CREATE TABLE WORKOUT(
+	workoutID CHAR(4) PRIMARY KEY,
+	workoutName VARCHAR(35) NOT NULL,
+	duration SMALLINT(30) NOT NULL,
+	FOREIGN KEY (difficultyID) REFERENCES DIFFICULTY (difficultyID)
+);
+
+NOTES:
+
+workoutID format: "W01", "W02", etc.  gives us up to 99 workouts
+
+duration format: Several options: "30-45 mins", "Approximately 35 minutes", etc
+
+Duration stored as minutes
+
+
+
+CREATE TABLE EXERCISE(
+	exerciseID CHAR(4) PRIMARY KEY,
+	exerciseName VARCHAR(40) NOT NULL,
+	sets SMALLINT NOT NULL,
+	reps SMALLINT
+); 
+	
+
+NOTES:
+
+
+
+Took the "intensityID" attribute out of this table for simplicity purposes
+	
+Took the "exerciseTypeCode" attribute out of this table for simplicity purposes
+
+
+CREATE TABLE WORKOUT_EXERCISE(
+	FOREIGN KEY(workoutID) REFERENCES WORKOUT(workoutID),
+	FOREIGN KEY(exercisesID) REFERENCES EXERCISES(exerciseID)
+);
+
+
+
+
+
+	
